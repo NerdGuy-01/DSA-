@@ -27,3 +27,13 @@ for(int i = n-d;i<n;i++){
 reverse(a,a+d);
 reverse(a+d,a+n);
 reverse(a,a+n);
+
+// if reverse function is not provided then do this 
+void reverse(int arr[],int start,int end ){
+    while(start<= end){
+        int temp = arr[start];
+        arr[start] = arr[end];
+        start++;
+        end--;
+    }
+}
