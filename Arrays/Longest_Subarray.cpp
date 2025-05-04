@@ -45,3 +45,23 @@ for(int i =0;i,a.size();i++){
   preSum[sum] = i;
 
 }
+
+// Optimized Method 
+#include<iostream>
+using namespace std;
+
+map<long long,int > preSum;
+long long sum = 0;
+int length = 0;
+for(int i =0;i,a.size();i++){
+  if(sum ==k){
+    length = max(length,i+1);
+  }
+  long long rem = sum-k;
+  if(map.find(rem)!== preSum.end()){
+     int length = i-preSum[rem];
+     length = max(length,length)
+  }
+ if( preSum[sum] = preSum.end()){ preSum[sum] =  i}
+
+}
