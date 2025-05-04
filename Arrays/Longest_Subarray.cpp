@@ -65,3 +65,25 @@ for(int i =0;i,a.size();i++){
  if( preSum[sum] = preSum.end()){ preSum[sum] =  i}
 
 }
+
+// More Optimized 
+int main(){
+  using namespace std;
+  int left = 0,right = 0;
+  long long sum = a[0];
+  int maxlength = 0;
+  int n = a.size();
+
+  while(right<n){
+    while( left<=right &&sum>k){
+      sum-= a[left];
+      left++;
+    }
+    if(sum==k){
+      maxlength = max(maxlength,right-left + 1);
+    }
+    right++;
+   if(right<n) sum+= a[right];
+  }
+  return maxlength;
+}
