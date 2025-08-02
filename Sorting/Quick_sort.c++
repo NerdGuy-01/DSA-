@@ -31,7 +31,7 @@ int main(){
 vector<int> a = {2,3,6,4,5,1,2,3,6,9,6,3,2,41,25};
   int n = a.size();
 
-
+quick_sort(a,0,n-1);
   cout << "After Sorting" << endl;
   for(int i =0;i<n;i++){
     cout << a[i] << " ";
