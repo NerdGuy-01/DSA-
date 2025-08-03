@@ -7,6 +7,15 @@ First Approach Use STL
 Add all elements of num2 in num1 and then sort them 
 Time complexity: O((m+n)log(m+n)) due to sort()function
 Space complexity: O(1)  not using any extra space
+
+
+Second Approach 
+
+Use two Pointer i = m-1 and j =n-1 and k= m+n-1;Then we can start iterating from the end of the arrays i and j, and compare the elements at these positions. We will place the larger element in nums1 at position k, and decrement the corresponding pointer i or j accordingly.
+
+Time complexity: O(m+n)  we are iterating on both arrays
+Space complexity: O(1)
+
 */
 
 
@@ -20,5 +29,23 @@ public:
        }
       sort(nums1.begin(),nums1.end());
       
+    }
+};
+
+// second Approach
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        
+        while (j >= 0) {
+            if (i >= 0 && nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
     }
 };
