@@ -35,6 +35,15 @@ Real Answer : Striver Solution
    Better Approach
    get rid of loop k like nums[k] = -(nums[i]+nums[j]) by using hashing but we have to be clear so that we don't choose the current elements in the array for the sum
  T.C.:  O(N2 * log(no. of unique triplets)), where N = size of the array
+
+
+
+  Optimal Approach 
+ Two pointer approach fix i and then keep moving j,k in order to get 0  and incrementing j and decrementing k and check value if =0 then ok otherwise move j,k
+T.C. : O(NlogN)+O(N2), where N = size of the array
+
+
+ 
 */
 
 // brute force 
@@ -84,4 +93,38 @@ vector<vector<int>> triplet(int n, vector<int> &arr) {
     vector<vector<int>> ans(st.begin(), st.end());
     return ans;
 }
+
+// Optimal Approach
+vector<vector<int>> triplet(int n, vector<int> &arr) {
+    vector<vector<int>> ans;
+    sort(arr.begin(), arr.end());
+    for (int i = 0; i < n; i++) {
+        //remove duplicates:
+        if (i != 0 && arr[i] == arr[i - 1]) continue;
+
+        //moving 2 pointers:
+        int j = i + 1;
+        int k = n - 1;
+        while (j < k) {
+            int sum = arr[i] + arr[j] + arr[k];
+            if (sum < 0) {
+                j++;
+            }
+            else if (sum > 0) {
+                k--;
+            }
+            else {
+                vector<int> temp = {arr[i], arr[j], arr[k]};
+                ans.push_back(temp);
+                j++;
+                k--;
+                //skip the duplicates:
+                while (j < k && arr[j] == arr[j - 1]) j++;
+                while (j < k && arr[k] == arr[k + 1]) k--;
+            }
+        }
+    }
+    return ans;
+}
+
 
