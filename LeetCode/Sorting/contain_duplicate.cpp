@@ -47,11 +47,11 @@ public:
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int> map;
+        unordered_set<int> seen;
         for (int it : nums) {
-            if (map.count(it) > 0)
+            if (seen.count(it) > 0)
                 return true;
-            map.insert(it);
+            seen.insert(it);
         }
         return false;
     }
