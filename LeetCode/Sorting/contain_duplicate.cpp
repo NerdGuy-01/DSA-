@@ -49,9 +49,9 @@ public:
     bool containsDuplicate(vector<int>& nums) {
         unordered_set<int> map;
         for (int it : nums) {
-            if (seen.count(it) > 0)
+            if (map.count(it) > 0)
                 return true;
-            seen.insert(it);
+            map.insert(it);
         }
         return false;
     }
