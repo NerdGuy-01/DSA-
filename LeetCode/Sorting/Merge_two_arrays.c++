@@ -13,6 +13,11 @@ Second Approach
 
 Use two Pointer i = m-1 and j =n-1 and k= m+n-1;Then we can start iterating from the end of the arrays i and j, and compare the elements at these positions. We will place the larger element in nums1 at position k, and decrement the corresponding pointer i or j accordingly.
 
+Compare elements at nums1[i] and nums2[j]
+
+Place the larger element at nums1[k]
+
+Decrement the respective pointer
 Time complexity: O(m+n)  we are iterating on both arrays
 Space complexity: O(1)
 
@@ -38,9 +43,9 @@ public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int i = m - 1; // Pointer to last valid element in nums1
         int j = n - 1; // Pointer to last element in nums2
-        int k = m + n - 1; // Pointer to the last position in nums1
+        int k = m + n - 1; // Pointer to the last position in merged array
         
-        while (j >= 0) {
+        while (j >= 0) {  /// checks for element that is greater in nums1 if not shift it, its like comparing 
             if (i >= 0 && nums1[i] > nums2[j]) {
                 nums1[k--] = nums1[i--];
             } else {
