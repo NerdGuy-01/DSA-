@@ -35,4 +35,35 @@ But Thought Process -> it ask for sum only so no indexes sort and use Two pointe
 
 Approach -1 : Fix i and j and keep k moving then keep j moving then i 
 T.C :  O(n3) triple loops
+
+Approach -2 : sort the array Fix i and then find sum of i and j two pointer
+absolute value(target-sum);
+
+if sum >target j--;
+if sum <targete i++;
 */
+
+// Approach -2
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int n = nums.size();
+        int clSum = nums[0] + nums[1] + nums[2];
+        sort(nums.begin(),nums.end());
+
+        for(int k =0;k<=n-2;k++){
+            int i = k+1;
+            int j =n-1;
+            while(i<j){
+                int sum = nums[k] + nums[i]+nums[j];
+                if(abs(target-sum)<abs(target-clSum)){
+                    clSum = sum;
+                }
+
+                if(sum<target) i++;
+                 else j--;
+            }
+        }
+        return clSum;
+    }
+};
