@@ -29,6 +29,32 @@ public:
 Thought process -> sort in accending order then they will be same 
 T.C. : N*Klog(K) , K = Maximum number of strings in str
 
+
+2. Approach 
+You create an array a[26] to count frequency of each lowercase letter.
+
+ch - 'a' → converts a character into an index between 0 and 25.
+You loop through the word, incrementing the count for each letter.
+
+After counting, you reconstruct a canonical form of the word:
+
+Always sorted alphabetically.
+
+Always contains letters in correct frequency.
+map → Key: the canonical form (sorted string). Value: all words matching that form.
+
+result → Final output.
+For each string:
+
+Generate its signature (new_word) using generate.
+
+Push it into the map under that signature.
+Each entry in map has a vector<string> containing one group of anagrams.
+
+Push all groups into result.
+
+
+
 */
 
 // 1 Approach 
@@ -52,3 +78,37 @@ public:
 };
 
 // 2 Approach
+class Solution {
+public:
+
+   string generate(string &word){
+    int a[26]  = {0};
+    for(char &ch:word){
+        a[ch-'a']++;
+    }
+    string new_word = "";
+    for(int i =0;i<26;i++){
+        int freq = a[i];
+
+        if(freq>0){
+            new_word += string(freq,i+'a');
+        }
+
+    }
+    return new_word;
+   }
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string,vector<string>>map;
+        vector<vector<string>> result;
+        int n = strs.size();
+        for(int i =0;i<n;i++){
+        string word = strs[i];
+        string new_word = generate(word);
+        map[new_word].push_back(word);
+        }
+        for(auto &it: map){
+            result.push_back(it.second);
+        }
+          return result;
+    }
+};
