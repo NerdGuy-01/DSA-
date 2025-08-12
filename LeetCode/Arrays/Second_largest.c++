@@ -37,6 +37,7 @@ Brute force ->
        Optimal ->
 
        largest =1, and second largest = -1 assuming this array does not contain any negative element
+       T.C.:O(N)
 */
 
 
