@@ -16,6 +16,17 @@ for(int i = n-d;i<n;i++){
 a[i] = temp[j]; or you can do this a[i] = temp[i-(n-d)]
 j++;
 }
+
+T.C. : O(N+D)
+S.C. : Extra space O(k)
+
+
+
+
+Optimal ->
+Revserse upto K parts array then another k-1 arrays and then to get answer reverse whole array 
+T.C: O(2N)
+S.C: O(1)
 */
 
 //  Brute
@@ -40,6 +51,19 @@ public:
         for (int i = 0; i < k; i++) {
             nums[i] = temp[i];
         }
+    }
+};
+
+// Optimal 
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        k %= n; // handle k > n
+
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
     }
 };
 
