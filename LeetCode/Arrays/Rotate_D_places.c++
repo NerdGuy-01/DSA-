@@ -27,6 +27,25 @@ Optimal ->
 Revserse upto K parts array then another k-1 arrays and then to get answer reverse whole array 
 T.C: O(2N)
 S.C: O(1)
+
+
+
+
+
+To Write Reverse Function
+void Reverse(int arr[], int start, int end)
+{
+  while (start <= end)
+  {
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+}
+
+}
 */
 
 //  Brute
