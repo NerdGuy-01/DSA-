@@ -6,6 +6,7 @@ First Approach Use STL
 
 Add all elements of num2 in num1 and then sort them 
 Time complexity: O((m+n)log(m+n)) due to sort()function
+Inserting a key in map takes logN times
 Space complexity: O(1)  not using any extra space
 
 
