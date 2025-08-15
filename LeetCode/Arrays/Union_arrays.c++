@@ -20,6 +20,10 @@ T.C: O(m+n) {If Space of Union ArrayList is considered}
 
 O(1) {If Space of union ArrayList is not considered}
 
+
+Optimal ->
+Using two Pointers
+
 */
 
 
@@ -52,3 +56,41 @@ vector < int > FindUnion(vector<int> nums1, vector<int> nums2) {
     result.push_back(it);
   return result;
 } 
+
+
+// Optimal Method 
+vector<int> union_fn(vector<int>& nums1, vector<int>& nums2) {
+    int n = nums1.size();
+    int m = nums2.size();
+    vector<int> result;
+    int i = 0, j = 0;
+
+    while (i < n && j < m) {
+        if (nums1[i] <= nums2[j]) {
+            if (result.empty() || result.back() != nums1[i]) // to check if duplicate elements are not stored
+                result.push_back(nums1[i]);
+            i++;
+        } else {
+            if (result.empty() || result.back() != nums2[j])
+                result.push_back(nums2[j]);
+            j++;
+        }
+    }
+
+    // Add remaining elements from nums1
+    while (i < n) {
+        if (result.empty() || result.back() != nums1[i])
+            result.push_back(nums1[i]);
+        i++;
+    }
+
+    // Add remaining elements from nums2
+    while (j < m) {
+        if (result.empty() || result.back() != nums2[j])
+            result.push_back(nums2[j]);
+        j++;
+    }
+
+    return result;
+}
+
