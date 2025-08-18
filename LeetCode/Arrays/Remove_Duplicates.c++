@@ -16,12 +16,13 @@ arr[index] = it;
 index++;
 }
 
-T.C : O(N lonN+N)
+T.C : O(NlogN+N)
 O.C : O(N)
 
 
 Optimal Solution 
-Using Two Pointer 
+Using Two Pointer  we check what number is different from i and then place the next value in front of i 
+ After completion of the loop return i+1, i.e size of the array of unique elements.
 
 
 */
