@@ -25,6 +25,7 @@ S.C. : Extra space O(k)
 
 Optimal ->
 Revserse upto K parts array then another k-1 arrays and then to get answer reverse whole array 
+first we reverse upto d parts then remaining then we reverse whole array 
 T.C: O(2N)
 S.C: O(1)
 
