@@ -6,6 +6,7 @@ Finding second largest element in an array
 Thought process -> You can't use sort and then print n-2 element cause what if max number has duplicates
 
 Brute force -> 
+ first sort it too 
  for(int i =n-2;i>=0;i--){
         if(nums[i]!=largest){
             second = nums[i];
