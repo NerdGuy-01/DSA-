@@ -76,7 +76,7 @@ int getLongestSubarray(vector<int>& nums, long long k) {
     return maxLen;
 }
 
-// better 
+// Optimal
 
 int getLongestSubarray(vector<int>& nums, long long k) {
     int n = a.size(); // size of the array.
