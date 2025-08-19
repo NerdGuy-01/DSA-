@@ -54,7 +54,7 @@ int getSingleElement(vector<int> &nums) {
     // Find the maximum element:
     int maxElement = arr[0];
     for (int i = 0; i < n; i++) {
-        maxElement = max(maxElement, arr[i]);
+        maxElement = max(maxElement, nums[i]);
     }
 
     // Declare hash array of size maxi+1
