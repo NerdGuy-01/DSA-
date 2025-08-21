@@ -67,28 +67,25 @@ int maxSubarraySum(vector<int>nums, int n) {
 
 
 // Optimal 
-int MaximumSubarray(vector<int>&nums){
-    int n = nums.size();
-   long long sum = 0;
-   int maxInt = LONG_MIN;
-   for (int i = 0; i < n; i++)
-   {
-     sum+=nums[i];
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        long long sum = 0;
+        long long maxInt = LLONG_MIN;  // allow negatives
 
-     if(sum>maxInt){
-        maxInt =  sum;
-     }
-     if(sum<0){
-        sum = 0;
-     }
-   }
-    // To consider the sum of the empty subarray
-    // uncomment the following check:
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+            maxInt = max(maxInt, sum);
 
-    if (maxInt < 0) maxInt = 0;
-return maxInt;
-  
-}
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+
+        return (int)maxInt;
+    }
+};
 
 
 // Follow up question
