@@ -13,6 +13,12 @@ Space Complexity: O(1) as we are not using any extra space.
 Optimal : Using Kadane Algorithm
 If you carry negative sum the summation will always gets reduced.
 In simple words it says that I will loop over the array and if the sum is less than zero I will be drop it otherwise I will increase it..
+Time Complexity: O(N), where N = size of the array.
+Reason: We are using a single loop running N times.
+Space Complexity: O(1) as we are not using any extra space.
+
+Follow up question 
+There might be more than one subarray with the maximum sum. We need to print any of them.
 
 
 */
@@ -83,3 +89,32 @@ int MaximumSubarray(vector<int>&nums){
 return maxInt;
   
 }
+
+
+// Follow up question
+long long maxSubarraySum(int arr[], int n) {
+    long long maxi = LONG_MIN; // maximum sum
+    long long sum = 0;
+
+    for (int i = 0; i < n; i++) {
+
+        sum += arr[i];
+
+        if (sum > maxi) {
+            maxi = sum;
+        }
+
+        // If sum < 0: discard the sum calculated
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+
+    // To consider the sum of the empty subarray
+    // uncomment the following check:
+
+    //if (maxi < 0) maxi = 0;
+
+    return maxi;
+}
+
