@@ -21,7 +21,7 @@ int maxProfit(vector<int> &arr) {
     return maxPro;
 }
 
-// Better 
+// Optimal 
 int maxProfit(vector<int> &arr) {
     int maxPro = 0;
     int n = arr.size();
