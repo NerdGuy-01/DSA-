@@ -27,8 +27,10 @@ for (int i = 0; i <n; i++)
 Space Complexity:  O(N/2 + N/2) = O(N) { N/2 space required for each of the positive and negative element arrays, where N = size of the array A}.
 
 
-Better :
-
+Better : We can't optimize the storage but can optimize the Time complexity 
+We know after the first positive element it will appear after two indexes same for negative 
+ Time Complexity: O(N)
+Space Complexity:  O(N/2 + N/2) = O(N
 */
 
 
@@ -49,3 +51,24 @@ vector<int> Rearrange(vector<int>&nums, int n){
  return nums;
   
 }
+
+// Better 
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        int n = nums.size();
+         vector<int> result(n,0);
+  int posIndex = 0;
+   int negIndex = 1;
+   for(int i =0;i<n;i++){
+    if(nums[i]<0){
+    result[negIndex] =  nums[i];
+    negIndex+=2;
+    } else{
+    result[posIndex] =  nums[i];
+    posIndex+=2;
+    }
+   }
+   return result;
+    }
+};
