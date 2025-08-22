@@ -18,19 +18,19 @@ int maxProfit(vector<int> &arr) {
         }
         }
 
-    return maxPro;
+    return sell;
 }
 
 // Optimal 
 int maxProfit(vector<int> &arr) {
-    int maxPro = 0;
+    int sell = 0;
     int n = arr.size();
     int minPrice = INT_MAX;
 
-    for (int i = 0; i < arr.size(); i++) {
+    for (int i = 0; i <n; i++) {
         minPrice = min(minPrice, arr[i]);
-        maxPro = max(maxPro, arr[i] - minPrice);
+        sell = max(maxPro, arr[i] - minPrice);
     }
     
-    return maxPro;
+    return sell;
 }
