@@ -74,5 +74,43 @@ public:
 };
 
 
-// Alterning 
-// Imagine if the question says that number are not even like 7, 3 positive and 4 negative elements and now you have to add them up too without alterning the order
+/* Alterning 
+ Imagine if the question says that number are not even like 7, 3 positive and 4 negative elements and now you have to add them up too without alterning the order.  Two cases pos>neg or neg>pos    to solve this fall back to brute force
+ T.C :  O(2*N) { The worst case complexity is O(2*N) which is a combination of O(N) of traversing the array to segregate into neg and pos array and O(N) for adding the elements alternatively to the main array}. 
+ S.C:O(N/2 + N/2) = O(N)
+*/
+
+vector<int> Rearrange(vector<int>&nums, int n){
+ vector<int>pos,neg;
+ for(int i =0;i<n;i++){
+  if(nums[i]>0){
+    pos.push_back(nums[i]);
+  } else{
+    neg.push_back(nums[i]);
+  }
+ }
+
+ if(pos.size()>neg.size()){
+  for(int i =0;i<neg.size();i++){
+    nums[2*i] = pos[i];
+    nums[2*i+1] =  neg[i];
+  }
+  int index = neg.size()*2;
+  for(int i = neg.size();i<pos.size();i++){
+    nums[index] =  pos[i];
+    index++;
+  }
+ } 
+ else{
+  for(int i =0;i<pos.size();i++){
+    nums[2*i] = pos[i];
+    nums[2*i+1] =  neg[i];
+  }
+  int index = pos.size()*2;
+  for(int i = pos.size();i<neg.size();i++){
+    nums[index] =  neg[i];
+    index++;
+  }
+ }
+  return nums;
+}
