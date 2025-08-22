@@ -72,3 +72,7 @@ public:
    return result;
     }
 };
+
+
+// Alterning 
+// Imagine if the question says that number are not even like 7, 3 positive and 4 negative elements and now you have to add them up too without alterning the order
