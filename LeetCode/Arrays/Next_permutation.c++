@@ -11,7 +11,9 @@ Brute : Generate all possible recursions then linear search and print next index
  
 Better :  using STL inbuilt function called next_permutation();
 
-Optimal :  Longer prefix matcher nums[i]<nums[i+1] then find someelement which is >nums but smaller one so that you stay close 
+Optimal :  Longer prefix matcher nums[i]<nums[i+1] then find someelement which is >nums but smaller one so that you stay close
+Time Complexity: O(3N),
+ space complexity is O(1).
 */
 
 // better
