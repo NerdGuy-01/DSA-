@@ -22,6 +22,10 @@ Brute : almost same my logic
 Time Complexity: O(N^2,
 Space Complexity: O(N)
 
+Optimal :  We iterate from last element as we only need to check the bigger element and also every array last element will always be leader as after that there are no element, in other words it means if we are on a element and if we find the maximum element from prev ones then we can say that it must be leader as it is greater than all of them 
+Time Complexity: O(N)
+Space Complexity: O(N)
+
 */
 
 // Brute 
@@ -40,4 +44,17 @@ vector<int> Leader(vector<int>&array,int n){
         if(leader) result.push_back(array[i]);
    }
 return result;
+}
+// Better
+vector<int> Leader(vector<int>&array,int n){
+    vector<int>result;
+     int max = array[n-1];
+     result.push_back(array[n-1]);
+     for(int i =n-2;i>=0;i++){
+      if(array[i]>max){
+        result.push_back(array[i]);
+        max = array[i];
+      }
+     }
+     return result;
 }
