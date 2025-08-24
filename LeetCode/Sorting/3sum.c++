@@ -35,6 +35,7 @@ Real Answer : Striver Solution
    Better Approach
    get rid of loop k like nums[k] = -(nums[i]+nums[j]) by using hashing but we have to be clear so that we don't choose the current elements in the array for the sum
  T.C.:  O(N2 * log(no. of unique triplets)), where N = size of the array
+ There is a reason why we are storing in a new set cause if we do what we did above we will get an runtime Error cause we are setting K equal to value that would make the sum Zero but we are treating it as index.
 
 
 
