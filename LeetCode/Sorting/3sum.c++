@@ -48,7 +48,7 @@ T.C. : O(NlogN)+O(N2), where N = size of the array
 
 // brute force 
   vector<vector<int>> triplet(int n, vector<int> &arr) {
-    set<vector<int>> st;
+    set<vector<int>> st; // store vector of integers
 
     // check all possible triplets:
     for (int i = 0; i < n; i++) {
@@ -56,7 +56,7 @@ T.C. : O(NlogN)+O(N2), where N = size of the array
             for (int k = j + 1; k < n; k++) {
                 if (arr[i] + arr[j] + arr[k] == 0) {
                     vector<int> temp = {arr[i], arr[j], arr[k]};
-                    sort(temp.begin(), temp.end());
+                    sort(temp.begin(), temp.end()); // sorting so that same numbers but with different order are considere identical
                     st.insert(temp);
                 }
             }
