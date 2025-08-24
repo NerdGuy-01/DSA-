@@ -86,7 +86,7 @@ vector<vector<int>> triplet(int n, vector<int> &arr) {
                 sort(temp.begin(), temp.end());
                 st.insert(temp);
             }
-            hashset.insert(arr[j]);
+            hashset.insert(arr[j]); // also check we insert in it
         }
     }
 
