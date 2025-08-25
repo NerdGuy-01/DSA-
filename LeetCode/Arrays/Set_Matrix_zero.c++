@@ -95,24 +95,28 @@ vector<vector<int>> ZeroMatrix(vector<vector<int>> &matrix, int n, int m){
 
 
 // Optimal 
-vector<vector<int>> ZeroMatrix(vector<vector<int>> &matrix, int n, int m) {
-    int col0 = 1; // flag for first column
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+         int col0 = 1; 
+         int n = matrix.size();
+        int m = matrix[0].size();
 
-    // Step 1: Mark the first row and first column
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (matrix[i][j] == 0) {
-                matrix[i][0] = 0; // mark row
+                matrix[i][0] = 0; 
                 if (j != 0) {
-                    matrix[0][j] = 0; // mark col
+                    matrix[0][j] = 0; 
                 } else {
-                    col0 = 0; // first column needs to be zeroed
+                    col0 = 0; 
                 }
             }
         }
     }
 
-    // Step 2: Use the marks to set other cells to 0
+
     for (int i = 1; i < n; i++) {
         for (int j = 1; j < m; j++) {
             if (matrix[i][0] == 0 || matrix[0][j] == 0) {
@@ -121,19 +125,18 @@ vector<vector<int>> ZeroMatrix(vector<vector<int>> &matrix, int n, int m) {
         }
     }
 
-    // Step 3: Handle first row
+   
     if (matrix[0][0] == 0) {
         for (int j = 0; j < m; j++) {
             matrix[0][j] = 0;
         }
     }
 
-    // Step 4: Handle first column
+  
     if (col0 == 0) {
         for (int i = 0; i < n; i++) {
             matrix[i][0] = 0;
         }
     }
-
-    return matrix;
-}
+    }
+};
