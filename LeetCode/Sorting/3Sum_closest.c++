@@ -43,6 +43,32 @@ if sum >target j--;
 if sum <targete i++;
 */
 
+
+
+
+// Brute force
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int n = nums.size();
+        int closetSum = INT_MAX;
+        int minDifference = INT_MAX;
+        for(int i =0;i<n;i++){
+            for(int j =  i+1;j<n-1;j++){
+                for(int k = j+1;k<n;k++ ){
+                    int currentSum = nums[i]+nums[j]+nums[k];
+                    int difference = abs(currentSum-target);
+                    if(difference<minDifference){
+                        minDifference = difference;
+                        closetSum = currentSum;
+                    }
+                }
+            }
+        }
+        return closetSum;
+    }
+};
+
 // Approach -2
 class Solution {
 public:
