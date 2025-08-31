@@ -111,5 +111,29 @@ We will use prefix sum
 Why we set presum = 0 ; 
 Let’s understand this using an example. Assume the given array is [3, -3, 1, 1, 1] and k is 3. Now, for index 0, we get the total prefix sum as 3, and k is also 3. So, the prefix sum of the remove-part should be x-k = 3-3 = 0. Now, if the value is not previously set for the key 0 in the map, we will get the default value 0 for the key 0 and we will add 0 to our answer. This will mean that we have not found any subarray with sum 3 till now. But this should not be the case as index 0 itself is a subarray with sum k i.e. 3.
 So, in order to avoid this situation we need to set the value of 0 as 1 on the map beforehand.
+
+
+mpp[0] = 1 is important: it handles the case when the subarray itself (from start) equals k.
+
+ T.C: if we are using an unordered_map data structure in C++ the time complexity will be O(N) but if we are using a map data structure, the time complexity will be O(N*logN). The least complexity will be O(N) as we are using a loop to traverse the array.
 */ 
 
+// Optimal 
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        map<int,int>mpp;
+        int n = nums.size();
+        mpp[0] =1;
+        int presum = 0, count  = 0;
+       for(int i =0;i<n;i++){
+        presum+=nums[i];
+        int remove = presum -k;
+        count+=mpp[remove];
+        mpp[presum]+=1;
+       }
+
+        return count;
+    }
+};
