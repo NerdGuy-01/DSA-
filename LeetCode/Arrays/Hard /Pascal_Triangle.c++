@@ -62,3 +62,20 @@ Reason: We are calculating the element for each column. Now, there are total n c
 
 Space Complexity: O(1) as we are not using any extra space.
 */
+
+// 3 Question
+
+vector<int>generatePascalTriange(int row){
+    long long ans = 1;
+    vector<int>ansrow;
+    ansrow.push_back(1);
+    for(int col = 1;col<row;col++){
+        ans = ans*(row-col);
+        ans = ans/(col);
+        ansrow.push_back(ans);
+    }
+    return ansrow;
+}
+// Time Complexity: O(N) where N = given row number. Here we are using only a single loop.
+
+ // Space Complexity: O(1) as we not using any extra space.
