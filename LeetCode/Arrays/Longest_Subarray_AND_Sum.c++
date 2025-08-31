@@ -104,3 +104,12 @@ int getLongestSubarray(vector<int>& nums, long long k) {
 
     return maxLen;
 }
+
+/*
+for Subarray Sum 
+We will use prefix sum 
+Why we set presum = 0 ; 
+Let’s understand this using an example. Assume the given array is [3, -3, 1, 1, 1] and k is 3. Now, for index 0, we get the total prefix sum as 3, and k is also 3. So, the prefix sum of the remove-part should be x-k = 3-3 = 0. Now, if the value is not previously set for the key 0 in the map, we will get the default value 0 for the key 0 and we will add 0 to our answer. This will mean that we have not found any subarray with sum 3 till now. But this should not be the case as index 0 itself is a subarray with sum k i.e. 3.
+So, in order to avoid this situation we need to set the value of 0 as 1 on the map beforehand.
+*/ 
+
