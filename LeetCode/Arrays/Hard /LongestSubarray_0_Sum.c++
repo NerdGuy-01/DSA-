@@ -40,24 +40,28 @@ int n = nums.size();
 
 }
 
-// Better 
-int LongestSubarraySize(vector<int>&nums){
-unordered_map<int,int>mpp;
-int maxlength = 0;
-int sum  = 0;
-int n = nums.size();
-for(int i = 0 ;i<n;i++){
-  sum+=nums[i];
-  if(sum==0){
-    maxlength = i+1;
-  } else{
-    if(mpp.find(sum)!=mpp.end()){
-        maxlength = max(maxlength,i-mpp[sum]);
-    } else{
-        mpp[sum] = i; 
-       }
-  }
-}
-return maxlength;
+// Optimal
+int LongestSubarraySize(vector<int>& nums){
+    unordered_map<int,int> mpp;
+    int maxlength = 0;
+    int sum  = 0;
+    int n = nums.size();
 
+    for(int i = 0 ; i < n; i++){
+        sum += nums[i];   // keep adding the numbers
+
+        if(sum == 0){
+            maxlength = i+1;   // whole array from 0 to i is zero sum
+        } else {
+            if(mpp.find(sum) != mpp.end()){
+                // sum was seen before, subarray between previous index+1 and i has sum 0
+                maxlength = max(maxlength, i - mpp[sum]);
+            } else {
+                // first time we see this sum, store index
+                mpp[sum] = i; 
+            }
+        }
+    }
+    return maxlength;
 }
+
