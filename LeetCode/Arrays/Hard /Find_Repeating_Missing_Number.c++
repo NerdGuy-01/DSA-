@@ -17,6 +17,10 @@ Space Complexity: O(N) as we are using a hash array to solve this problem.
 
 Optimal :
 Using two equation approach 
+Time Complexity: O(N), where N = the size of the given array.
+Reason: We are using only one loop running for N times. So, the time complexity will be O(N).
+
+Space Complexity: O(1) as we are not using any extra space to solve this problem.
 
 
 
