@@ -12,6 +12,7 @@ Space Complexity: O(1) as we are not using any extra space to solve this problem
 Optimal :
 Using merge sorted Imagine you have 2 arrays both are sorted. Then we only need to find left>right so if we got one element which is greater than in right array we can say that after that element all are greater than that why cause arrays are sorted.
 Numbers on the right = mid-left+1
+In Coding contest or interviews just assign count as global variable and do that line count+=(mid-low+1) thats it and return mergesort
 
 
 */
@@ -28,4 +29,51 @@ int Inversion(vector<int>&nums){
         }
     }
   return count;
+}
+
+
+// Optimal 
+int merge(vector<int>&nums,int low,int mid,int high){
+    int count = 0;
+    int left = low;
+    int right = mid+1;
+    vector<int>temp;
+    while(left<=mid && right<=high){
+        if(nums[left]<=nums[right]){
+            temp.push_back(nums[left++]);
+            left++;
+        } 
+         // right is smaller
+        else{
+             temp.push_back(nums[right++]);
+             count +=(mid-low+1);
+             right++;
+        }
+    }
+    while(left<=mid){
+        temp.push_back(nums[left++]);
+        left++;
+    }
+    while (right<=high)
+    {
+       temp.push_back(nums[left++]);
+       right++;
+    }
+     return count;
+}
+
+int merge_sort(vector<int>&nums,int low,int high){
+    int count;
+       if(low>=high) return count;
+       int mid = (high+low)/2;
+     count+= merge_sort(nums,low,mid+1);
+     count+= merge_sort(nums,mid+1,high);
+      count+= merge(nums,low,mid,high);
+      return count;
+}
+
+int Inversion(vector<int>&nums){
+    int n = nums.size();
+ return   merge_sort(nums,0,n-1);
+    
 }
