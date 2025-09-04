@@ -63,6 +63,11 @@ int merge(vector<int>&nums,int low,int mid,int high){
        temp.push_back(nums[left++]);
        right++;
     }
+
+    // transfering all elements from temporary to arr //
+    for (int i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+    }
      return count;
 }
 
