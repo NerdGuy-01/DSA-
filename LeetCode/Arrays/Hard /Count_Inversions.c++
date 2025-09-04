@@ -12,7 +12,11 @@ Space Complexity: O(1) as we are not using any extra space to solve this problem
 Optimal :
 Using merge sorted Imagine you have 2 arrays both are sorted. Then we only need to find left>right so if we got one element which is greater than in right array we can say that after that element all are greater than that why cause arrays are sorted.
 Numbers on the right = mid-left+1
-In Coding contest or interviews just assign count as global variable and do that line count+=(mid-low+1) thats it and return mergesort
+Time Complexity: O(N*logN), where N = size of the given array.
+Reason: We are not changing the merge sort algorithm except by adding a variable to it. So, the time complexity is as same as the merge sort.
+
+Space Complexity: O(N), as in the merge sort We use a temporary array to store elements in sorted order.
+
 
 
 */
