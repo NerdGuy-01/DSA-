@@ -1,5 +1,5 @@
-/*
-Iterative method 
+
+// Iterative method 
 int search(vector<int>&nums,int target){
     int n = nums.size();
     int low =0;
@@ -12,4 +12,5 @@ int search(vector<int>&nums,int target){
     }
     return -1;
 }
-*/
+
+// Recursive method
