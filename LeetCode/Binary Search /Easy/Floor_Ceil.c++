@@ -30,7 +30,13 @@ Approach :
 find mid then 
 If it’s ≤ target, it can be a floor candidate → save it, then search right to see if there’s a bigger one still ≤ target.
 
-If it’s > target, it’s too big → search left.
+If it’s > target, it’s too big → search left.\
+Why are we not comparing the numbers to get the largest or smallest while calculating the floor or ceiling?
+
+In the floor algorithm, if we get a possible answer, we are reducing the search space to the right half. And the right half certainly contains larger numbers than the current answer. So, every time we are getting larger numbers as answers.
+Similarly, in the ceil algorithm, if we get a possible answer, we are reducing the search space to the left half. And the left half certainly contains smaller numbers than the current answer. So, every time we are getting smaller numbers as answers.
+Basically, in each case, we are moving in a direction such that we get the largest or the smalleset as per our need. That is why we are not checking for the largest or the smallest explict
+
 Time Complexity: O(logN), where N = size of the given array.
 Reason: We are basically using the Binary Search algorithm.
 
