@@ -47,3 +47,26 @@ int Upper_bound(vector<int>&nums,int x){
    return result; // hypothetical answer if we don't find any lower bond
 }
 // // TC : O(log2N) and yeah you can also use upper_bound template 
+
+
+
+// for Insert Position 
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = nums.size();
+    int low =0;
+    int high = n-1;
+    int result = n;
+    while(low<=high){
+    int mid = low + (high-low)/2;
+        if(nums[mid]>=target){
+               result = mid;
+               high = mid-1;
+        } else{
+            low = mid+1;
+        }
+    }
+    return result;
+    }
+};
