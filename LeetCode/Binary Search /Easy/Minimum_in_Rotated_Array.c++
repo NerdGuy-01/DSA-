@@ -16,6 +16,11 @@ Reason: We have not used any extra data structures, this makes space complexity,
 
 Optimal : 
 if the searh space is already sorted then nums[low] will always be smaller in that search space 
+Time Complexity: O(logN), N = size of the given array.
+Reason: We are basically using binary search to find the minimum. 
+
+Space Complexity: O(1)
+Reason: We have not used any extra data structures, this makes space complexity, even in the worst case as O(1).
 */
 
 // Better 
