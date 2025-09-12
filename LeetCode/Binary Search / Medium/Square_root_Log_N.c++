@@ -8,6 +8,14 @@ Linear search as we know sqrt is n*n;
 
 Optimal 1 :
 Whenever you are given a condition where to a certain point ans is possible and after that ans is not possible always use binary search 
+Time Complexity: O(N), N = the given number.
+Reason: Since we are using linear search, we traverse the entire answer space.
+
+Space Complexity: O(1) as we are not using any extra space.
+Time Complexity: O(logN), N = size of the given array.
+Reason: We are basically using the Binary Search algorithm.
+
+Space Complexity: O(1) as we are not using any extra space.
 */
 
 // Brute 
@@ -21,3 +29,20 @@ int Floorsqrt(int n){
   }
 return  ans;
 }
+
+// another is you can use sqrt() built in function T.C is same as O(logN)
+
+// Optimal
+int Floorsqrt(int n){
+  int ans =0;
+  int low = 1; int high = n;
+  while(low<=high){
+    long long mid = low + (high-low)/2;
+    if(mid*mid<=(long long)n){
+      ans = mid;
+      low = mid+1;
+    } else high = mid-1;
+  }
+  return ans;
+}
+
