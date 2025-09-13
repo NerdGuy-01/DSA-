@@ -51,35 +51,39 @@ int minimumTimeToEat(vector<int>arr,int h ){
 }
 
 // optimal 
-int findMax(vector<int>&arr){
-    int maxInt = INT_MIN;
-    int n = arr.size();
-        for (int i = 0; i < n; i++) {
-        maxInt = max(maxInt, arr[i]);
-    }
- return maxInt;
-}
-
-int CalculateTotalHours(vector<int>&arr,int hour){
- int totalH = 0;
- int n= arr.size();
- for(int i =0;i<n;i++){
-      totalH += ceil((double)(arr[i]) / (double)(hour));
- }
- return totalH;
-}
-
-int minimumTimeToEat(vector<int>arr,int h ){
-   int low =1; int high = findMax(arr);
-    while (low <= high) {
-        int mid = (low + high) / 2;
-        int totalH = CalculateTotalHours(arr, mid);
-        if (totalH <= h) {
-            high = mid - 1;
+class Solution {
+public:
+    int findMax(vector<int>& piles) {
+        int maxInt = INT_MIN;
+        for (int x : piles) {
+            maxInt = max(maxInt, x);
         }
-        else {
-            low = mid + 1;
-        }
+        return maxInt;
     }
-    return low;
-}
+
+    long long CalculateTotalHours(vector<int>& piles, int hour) {
+        long long totalH = 0;
+        for (int pile : piles) {
+            // integer ceil: ceil(pile/hour) = (pile + hour - 1) / hour
+            totalH += (pile + hour - 1) / hour;
+        }
+        return totalH;
+    }
+
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int low = 1;
+        int high = findMax(piles);
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            long long totalH = CalculateTotalHours(piles, mid);
+
+            if (totalH <= h) {
+                high = mid - 1;  // try smaller speed
+            } else {
+                low = mid + 1;   // need larger speed
+            }
+        }
+        return low;  // smallest valid eating speed
+    }
+};
