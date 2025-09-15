@@ -7,6 +7,13 @@ Reason: We are using nested loops. The outer loop runs from 1 to max(arr[]) and 
 
 Space Complexity: O(1) as we are not using any extra space to solve this problem.
 
+Optimal :
+Using binary Search 
+Time Complexity: O(log(max(arr[]))*N), where max(arr[]) = maximum element in the array, N = size of the array.
+Reason: We are applying binary search on our answers that are in the range of [1, max(arr[])]. For every possible divisor ‘mid’, we call the sumByD() function. Inside that function, we are traversing the entire array, which results in O(N).
+
+Space Complexity: O(1) as we are not using any extra space to solve this problem.
+
 */
 
 // Brute force 
@@ -27,3 +34,35 @@ int smallestDivisor(vector<int>& nums, int limit) {
     }
     return -1;
 }
+
+// Optimal 
+class Solution {
+public:
+
+  int sumD(vector<int>nums,int div){
+    int n = nums.size();
+ int sum = 0;
+ for (int i = 0; i < n; i++)
+ {
+   sum += ceil((double)nums[i]/(double)div);
+ }
+ return sum;
+  }
+    int smallestDivisor(vector<int>& nums, int threshold) {
+        
+         int n = nums.size(); // if divisor dont exist 
+         if(n>threshold) return -1;
+   int low = 1;
+   int high = *max_element(nums.begin(),nums.end());
+   
+   while(low<=high){
+    int mid = (high+low)/2;
+    if(sumD(nums,mid)<=threshold){
+        high = mid-1;
+    } else {
+        low = mid+1;
+    }
+   }
+   return low;
+    }
+};
