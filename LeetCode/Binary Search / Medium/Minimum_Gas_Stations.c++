@@ -92,7 +92,7 @@ long double minimiseMaxDistance(vector<int> &arr, int k) {
     return pq.top().first;
 }
 
-// Better 
+// Optimal
 int numberOfGasStationsRequired(long double dist, vector<int> &arr) {
     int n = arr.size(); // size of the array
     int cnt = 0;
