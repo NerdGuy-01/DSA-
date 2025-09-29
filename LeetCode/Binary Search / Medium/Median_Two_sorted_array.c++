@@ -116,7 +116,7 @@ public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
          int n1 = nums1.size(), n2 = nums2.size();
     //if n1 is bigger swap the arrays:
-    if (n1 > n2) return findMedianSortedArrays(nums2,nums1);
+    if (n1 > n2) return findMedianSortedArrays(nums2,nums1); // want to make sure that first element is always smaller
 
     int n = n1 + n2; //total length
     int left = (n1 + n2 + 1) / 2; //length of left half
