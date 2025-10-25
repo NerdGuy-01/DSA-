@@ -58,7 +58,7 @@ public:
     }
 };
 
-// Optimal T.C : O(N)
+// Better  T.C : O(N) and SC : O(N)
 class Solution {
 public:
     int beautySum(string s) {
@@ -82,3 +82,4 @@ public:
         return sum;
     }
 };
+
