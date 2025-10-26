@@ -5,3 +5,49 @@ Return a string with the words in reverse order, concatenated by a single space.
 
 
 */
+
+// my code which is incorrect as  it reverse the whole string 
+class Solution {
+public:
+    string reverseWords(string s) {
+     int n = s.size();
+        string result  = "";
+        int k = n-1;
+        while(k>=0){
+            result.push_back(s[k]);
+            k--;
+        }
+        return result;
+    }
+};
+
+// Brute force  T.C.: O(N) and S.C :O(N)
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+        vector<string>word;
+        int start , end;
+        int i =0;
+        while(i<n){
+            while(i<n && s[i]==' ')i++;
+            if(i>=n) break;
+
+            start = i;
+            while(i<n && s[i]!=' ') i++;
+            end = i-1;
+            string wordFount  = s.substr(start,end-start+1);
+            word.push_back(wordFount);
+        }
+        string ans = "";
+        for(int i = word.size() - 1; i >= 0; i--) {
+            ans += word[i];
+            
+            // Adding spaces in between words
+            if(i != 0) ans.push_back(' ');
+        }
+        
+        return ans; 
+        
+    }
+};
