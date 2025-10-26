@@ -51,3 +51,42 @@ public:
         
     }
 };
+
+// optimal T.C : O(N) and S.C :O(N)
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+        int i = 0, j = 0;
+        int start, end;
+
+        while (j < n) {
+            // Skip spaces
+            while (j < n && s[j] == ' ') j++;
+            if (j == n) break;
+
+            start = i;
+
+            // Copy the word forward
+            while (j < n && s[j] != ' ') {
+                s[i++] = s[j++];
+            }
+
+            end = i - 1;
+
+            // Reverse the current word
+            reverse(s.begin() + start, s.begin() + end + 1);
+
+            // Add a space if more words remain
+            if (j < n) s[i++] = ' ';
+        }
+
+        // Trim trailing space
+        if (i > 0 && s[i - 1] == ' ') i--;
+
+        s.resize(i);
+        reverse(s.begin(), s.end());
+
+        return s;
+    }
+};
