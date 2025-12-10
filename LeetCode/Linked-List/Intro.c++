@@ -35,6 +35,16 @@ int main(){
  
 }
 
+// to find if the element is possible or not 
+
+int checkIfPresent(Node * head,int val){
+  Node * temp = head;
+  while(temp){
+    if(temp-> data==val) return 1;
+    temp  = temp-> next;
+  }
+  return 0;
+}
 
 // to find lenght
 int lengthOfLL(Node * head){
